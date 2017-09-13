@@ -1,14 +1,20 @@
 Rails.application.routes.draw do
 
-	root to: "photoalbums#index"
+	root to: "comments#index"
 
+	resources :photoalbums, only: [:show, :index, :new, :create, :edit, :update, :destroy] do
 
-	resources :users, only: [:show, :index, :new, :create, :edit, :update, :destroy] do
+		resources :photos do
 
-	resources :photoalbums, only: [:show, :index, :new, :create, :edit, :update, :destroy]
+			resource :comments
+
+		end
+
+	end
+
 
 end 
-end
+
 
 
 
