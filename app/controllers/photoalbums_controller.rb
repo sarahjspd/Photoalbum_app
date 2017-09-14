@@ -7,4 +7,10 @@ class PhotoalbumsController < ApplicationController
 
 end
 
+# You can use your uploader class to store and retrieve files like this:
 
+# uploader = AvatarUploader.new
+
+# uploader.store!(my_file)
+
+# uploader.retrieve_from_store!('my_file.png')
