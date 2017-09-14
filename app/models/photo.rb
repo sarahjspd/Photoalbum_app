@@ -4,4 +4,6 @@ class Photo < ApplicationRecord
 
 	belongs_to :photoalbum
 
+	mount_uploader :image, ImageUploader
+
 end
