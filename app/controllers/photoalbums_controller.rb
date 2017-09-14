@@ -4,4 +4,7 @@ class PhotoalbumsController < ApplicationController
 		@photoal = Photoalbum.all
 	end
 
+
 end
+
+
