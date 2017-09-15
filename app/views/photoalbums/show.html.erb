@@ -1,0 +1,37 @@
+
+<div class="tasklistdetail">
+	<h1> Photoalbum Details </h1>
+	</div>
+
+	<code>Title: </code>
+	<p class="showtext"> <%= @photoal.title %></p>
+	<code>Description: </code>
+	<p class="showtext"> <%= @photoal.description %></p>
+
+	<div class="buttons"><%= link_to "Edit", edit_photoalbum_path(id: @photoal.id) %></div>
+	<!-- why (id: @post.id) because there are 2 ways to do a hash, one way is { _ => _} or {_: _} using a symbol -->
+	<div class="buttons"><%= link_to "Add a Photo", new_photoalbum_photo_path(photoalbum_id: @photoal.id) %></div>
+	<div class="buttons"><%= link_to "Back_to_All_Photoalbum", photoalbums_path %></div>
+
+<hr>
+<h3>Photos</h3>
+
+  <% @photoal.photos.each do |photo| %>
+    <%= link_to image_tag(photo.image.url), photoalbum_photo_path(photoalbum_id: @photoal.id, photo_id: photo.id) %>
+  <% end %>
+
+	
+<h3>Add a Photo..</h3>
+<%= form_for @phot, url: photoalbum_photos_path(photoalbum_id: @photoal.id), method: :post do |f| %>
+
+	<%= f.hidden_field :photoalbum_id %>
+	<%= f.file_field :image %>
+<div class="buttons">
+
+	  <%= f.submit "Upload" %>
+</div>
+
+<% end %>
+
+
+

@@ -1,9 +1,61 @@
 <h1>Photoalbum</h1>
 
-<% @photoal.each do |photoalbum| %>
+<table class="table table-hover">
+	<thead>
+		<th>Title</th>
+		<th>Description</th>
+		<th>User</th>
+		<th>Updated At</th>
+	</thead>
+	
+	<tbody>
 
-  <% photoalbum.photos.each do |photo| %>
-    <%= image_tag photo.image.url %>
-  <% end %>
+	<% @photoal.each do |photoal| %>
 
-<% end %>
+		<tr>
+			<td><%= photoal.title %></td>
+			<td><%= photoal.description %></td>
+			<td><%= photoal.user.email %></td>
+			<td><%= photoal.updated_at.localtime %></td>
+			<td><div class="buttons"><%= link_to "View", photoalbum_path(id: photoal.id) %></div></td>
+			<td><div class="buttons"><%= link_to "Edit", edit_photoalbum_path(id: photoal.id) %></div></td>
+			<td><div class="buttons"><%= link_to "Delete", photoalbum_path(id: photoal.id), method: :delete %></div></td>
+
+		</tr>
+
+	<% end %>
+			
+	</tbody>
+		
+</table>
+
+<div class="buttons"><%= link_to "Create New Photoalbum", new_photoalbum_path %></div>
+
+<hr>
+
+<h3> All Photos </h3>
+
+<table class="table table-hover">
+	<thead>
+		<th>Title</th>
+		<th>User</th>
+		<th>Updated At</th>
+	</thead>
+	
+	<tbody>
+
+	<% @phot.each do |phot| %>
+
+		<tr>
+			<td><%= phot.title %></td>
+			<td><%= phot.photoalbum.user.email %></td>
+			<td><%= phot.updated_at.localtime %></td>
+
+			<!-- deleted the View buttons because id was nil -->
+		</tr>
+
+	<% end %>
+			
+	</tbody>
+		
+</table>

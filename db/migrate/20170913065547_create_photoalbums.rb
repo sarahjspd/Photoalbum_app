@@ -2,7 +2,7 @@ class CreatePhotoalbums < ActiveRecord::Migration[5.1]
   def change
     create_table :photoalbums do |t|
 
-    	t.string :string
+    	t.string :title
     	t.text :description
 
 
