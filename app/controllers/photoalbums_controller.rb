@@ -34,5 +34,48 @@ class PhotoalbumsController < ApplicationController
 
 	end
 
+	def edit
+		@photoal = Photoalbum.find_by(id: params[:id])
+	end
+
+	def update
+		post_params = params.require(:photoalbum).permit(:title, :description)
+		@photoal = Photoalbum.find(params[:id])
+		if @photoal.update(post_params)
+			flash[:notice] = "Successfully Updated"
+			redirect_to photoalbum_path(id: @photoal.id)
+		else
+			flash.now[:notice] = "Not Successfully Updated"
+			render :edit
+		end
+	end
+
+	def destroy
+		@photoal = Photoalbum.find(params[:id])
+		if @photoal.destroy
+			flash[:notice] = "Photoalbum deleted successfully"
+			redirect_to photoalbums_path
+		end
+	end
+
 
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

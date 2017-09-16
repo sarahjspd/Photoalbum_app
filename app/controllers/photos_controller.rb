@@ -29,5 +29,49 @@ class PhotosController < ApplicationController
 
 	end
 
+	def edit
+		@photoal = Photoalbum.find(params[:photoalbum_id])
+		@phot = Photo.find_by(id: params[:id])
+	end
+
+	def update
+		@photoal = Photoalbum.find(params[:photoalbum_id])
+		@phot = Photo.find_by(id: params[:id])
+		post_params = params.require(:photo).permit(:title, :description, :image)
+		if @phot.update(post_params)
+			# if i put @photoal.update(post_params) it still works! why?
+			flash[:notice] = "Successfully Updated"
+		else
+			flash[:notice] = "Not Successfully Updated"
+			render :edit
+		end
+	end
+
+	def destroy
+		@photoal = Photoalbum.find(params[:photoalbum_id])
+		@phot = Photo.find_by(id: params[:id])
+		if @phot.destroy
+			flash[:notice] = "Successfully Deleted"
+			redirect_to photoalbum_path(id: @photoal.id)
+		end
+
+	end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 end
