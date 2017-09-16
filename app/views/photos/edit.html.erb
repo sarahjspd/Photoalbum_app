@@ -1,12 +1,13 @@
+<%= flash.now[:notice] %>
 
-<h3>Edit Your Photoalbum...</h3>
+<h3>Edit your photos...</h3>
 
-	<%= form_for @photoal, url: photoalbum_path, method: :put do |f| %>
+	<%= form_for @phot, url: photoalbum_photo_path(photoalbum_id: @photoal.id), method: :put do |f| %>
 <table class="table table-hover">
 	<thead>	
 		<th>Title</th>
 		<th>Description</th>
-
+		<th>Image</th>
 	</thead>
 	<tbody>
 		<tr>
@@ -15,6 +16,9 @@
 			</td>
 			<td>
 			  <%= f.text_field :description %>
+			</td>
+			<td>
+			  <%= f.file_field :image %>
 			</td>
 		</tr>
 	</tbody>
@@ -25,5 +29,5 @@
 
 	  <%= f.submit "Update" %>
 	 </div>
-	 <div class=buttons><%= link_to "Back_to_All_Photoalbums", photoalbums_path %></div>
+	 <div class=buttons><%= link_to "Back_to_All_Photos", photoalbum_path(id: @photoal.id) %></div>
 	<% end %>
