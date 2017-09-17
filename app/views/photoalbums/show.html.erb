@@ -1,32 +1,42 @@
 
 <div class="tasklistdetail">
-	<h1> Photoalbum Details </h1>
+	<h3><u> Photoalbum Details</u> </h3>
 	</div>
+<table class="albumshow">
+	<thead>
+		<th><u>Title</u></th>
+		<th><u>Description</u></th>
+	</thead>
+	<tbody>
+		<tr>
+			<td><%= @photoal.title %></td>
+			<td><%= @photoal.description %></td>
+		</tr>
+	</tbody>
+</table>
+<p>
+</p>
 
-	<code>Title: </code>
-	<p class="showtext"> <%= @photoal.title %></p>
-	<code>Description: </code>
-	<p class="showtext"> <%= @photoal.description %></p>
+<h3>Photos</h3>
+<div class="indexphotos">
+  <% @photoal.photos.each do |photo| %>
+    <%= link_to image_tag(photo.image.url(:thumb)), photoalbum_photo_path(photoalbum_id: @photoal.id, id: photo.id) %>
+
+	<% end %>
+</div>
+
+<hr>
+	
 	<% if @photoal.user_id == current_user.id %>
 	<div class="buttons"><%= link_to "Edit", edit_photoalbum_path(id: @photoal.id) %></div>
 	<!-- why (id: @post.id) because there are 2 ways to do a hash, one way is { _ => _} or {_: _} using a symbol -->
-	<div class="buttons"><%= link_to "Add a Photo", new_photoalbum_photo_path(photoalbum_id: @photoal.id) %></div>
 	<div class="buttons"><%= link_to "Delete", photoalbum_path(id: @photoal.id), method: :delete %></div>
+	<div class="buttons"><%= link_to "Add a Photo", new_photoalbum_photo_path(photoalbum_id: @photoal.id) %></div>
+
 	<% end %>
 	<div class="buttons"><%= link_to "Back_to_All_Photoalbum", photoalbums_path %></div>
 
 <hr>
-<h3>Photos</h3>
-
-  <% @photoal.photos.each do |photo| %>
-    <%= link_to image_tag(photo.image.url), photoalbum_photo_path(photoalbum_id: @photoal.id, id: photo.id) %>
-<% if @photoal.user_id == current_user.id %>
-
-    <div class="buttons"><%= link_to "Edit", edit_photoalbum_photo_path(photoalbum_id: @photoal.id), id: photo.id %></div>
-    <div class="buttons"><%= link_to "Delete", photoalbum_path(photoalbum_id: @photoal.id) %></div>
-
-  <% end %>
-<% end %>
 
 <% if @photoal.user_id == current_user.id %>
 
