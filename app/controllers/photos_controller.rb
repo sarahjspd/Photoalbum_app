@@ -26,7 +26,6 @@ class PhotosController < ApplicationController
 	def show
 		@photoal = Photoalbum.find(params[:photoalbum_id])
 		@phot = Photo.find_by(id: params[:id])
-		# @a = distance_of_time_in_words(time.now, @phot.updated_at.localtime)
 
 	end
 
@@ -39,8 +38,7 @@ class PhotosController < ApplicationController
 		@photoal = Photoalbum.find(params[:photoalbum_id])
 		@phot = Photo.find_by(id: params[:id])
 		post_params = params.require(:photo).permit(:title, :description, :image)
-		if @phot.update(post_params)
-			# if i put @photoal.update(post_params) it still works! why?
+		if @photoal.update(post_params)
 			flash[:notice] = "Successfully Updated"
 			redirect_to photoalbum_photo_path(photoalbum_id: @photoal.id, id: @phot.id)
 		else
