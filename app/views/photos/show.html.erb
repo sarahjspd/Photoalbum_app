@@ -13,7 +13,7 @@
 		<tr>
 			<td><%= @phot.title %></td>
 			<td><%= @phot.description %></td>
-			<td><%= @phot.updated_at.localtime.day %> Days Ago (Needs Attention)</td>
+			<td><%= distance_of_time_in_words(Time.now, @phot.updated_at.localtime) %></td>
 		</tr>
 	</tbody>
 </table>
@@ -24,14 +24,14 @@
 <hr>
 	<% if @photoal.user_id == current_user.id %>
 
-		<div class=buttons><%= link_to "Back", photoalbum_path(id: @photoal.id) %></div>
+		
 
 	    <div class="buttons"><%= link_to "Edit", edit_photoalbum_photo_path(photoalbum_id: @photoal.id), id: @phot.id %></div>
-	    <div class="buttons"><%= link_to "Delete", photoalbum_path(photoalbum_id: @photoal.id) %></div>
+	    <div class="buttons"><%= link_to "Delete", photoalbum_photo_path(photoalbum_id: @photoal.id, id: @phot.id), method: :delete %></div>
 
 	 <% end %>
 
-
+	<div class=buttons><%= link_to "Back", photoalbum_path(id: @photoal.id) %></div>
 	<div class=buttons><%= link_to "Back_to_All_Photoalbums", photoalbums_path %></div>
 
 	
