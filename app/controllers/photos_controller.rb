@@ -26,6 +26,7 @@ class PhotosController < ApplicationController
 	def show
 		@photoal = Photoalbum.find(params[:photoalbum_id])
 		@phot = Photo.find_by(id: params[:id])
+		@comm = Comment.new
 
 	end
 

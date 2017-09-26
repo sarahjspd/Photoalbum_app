@@ -1,8 +1,0 @@
-<h1> All Photos</h1>
-
-<% @photoal.each do |photoalbum| %>
-
-  <% photoalbum.photos.each do |photo| %>
-    <%= image_tag photo.image.url %>
-  <% end %>
-<% end %>
