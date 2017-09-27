@@ -10,8 +10,8 @@ class PhotoalbumsController < ApplicationController
 	end
 
 	def create
-		post_params = params.require(:photoalbum).permit(:title, :description)
-		@photoal = Photoalbum.new(post_params)
+		photoal_params = params.require(:photoalbum).permit(:title, :description, :image)
+		@photoal = Photoalbum.new(photoal_params)
 		@photoal.user_id = current_user.id
 		if @photoal.save
 			flash[:notice] = 'Successfully Created!'
@@ -39,7 +39,7 @@ class PhotoalbumsController < ApplicationController
 	end
 
 	def update
-		post_params = params.require(:photoalbum).permit(:title, :description)
+		post_params = params.require(:photoalbum).permit(:title, :description, :image)
 		@photoal = Photoalbum.find(params[:id])
 		if @photoal.update(post_params)
 			flash[:notice] = "Successfully Updated"

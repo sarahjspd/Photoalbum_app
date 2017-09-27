@@ -1,3 +1,46 @@
+<%= flash.now[:notice] %>
+
+<div class="background-image-photoalbum-new ">
+
+
+<h3 class="h1-text">It's Time to Create a Photoalbum...</h3>
+
+	<%= form_for @photoal, url: photoalbums_path, method: :post do |f| %>
+
+			<div class="form">
+			<%= f.label  :title %></br>
+			  <%= f.text_field :title %>
+			</div>
+
+			<div class="form">
+			<%= f.label  :description %></br>
+			 <%= f.text_field :description %>
+			 </div>
+			
+			<div class="form">
+			<%= f.label  :image %></br></div>
+			<div class="form">
+			<%= f.file_field :image %>
+			</div>
+
+
+			<div class="form">
+			
+	  		<%= f.submit "Create" %>
+	  		
+	  		</div>
+	 
+	 <div class="form">
+	 <%= button_tag(type: 'submit', class: "btn btn-success") do %>
+	 <%= link_to "Submit", photoalbums_path %>
+	 <% end %>
+	 </div>
+	<% end %>
+
+</div>
+
+
+
 
 <h3>It's Time to Create a Photoalbum...</h3>
 

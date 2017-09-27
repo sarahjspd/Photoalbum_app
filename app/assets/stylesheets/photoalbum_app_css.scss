@@ -1,3 +1,27 @@
+
+.background-image-index {
+	background-image: url(/assets/black-and-white-flying-airplane-jet.jpg);
+	background-attachment:fixed;
+	background-repeat:no-repeat;
+	background-size:cover;
+
+	margin: -20px 0 0 -6px;
+}
+
+
+.h1-text {
+	padding-top: 50px;
+	font-size: 60px;
+	text-align: center;
+}
+
+
+
+
+
+
+
+
 div.indexphotos {
 	
 	display: inline-block;
@@ -15,4 +39,15 @@ table.albumshow th {
 	
 	padding: 10px;
 	color: #CC6F6F;
+}
+
+
+
+.background-image-index {
+	background-image: url(/assets/black-and-white-flying-airplane-jet.jpg);
+	background-attachment:fixed;
+	background-repeat:no-repeat;
+	background-size:cover;
+
+	margin: -20px 0 0 -6px;
 }

@@ -20,7 +20,7 @@
 <h3>Photos</h3>
 <div class="indexphotos">
   <% @photoal.photos.each do |photo| %>
-    <%= link_to image_tag(photo.image.url(:thumb)), photoalbum_photo_path(photoalbum_id: @photoal.id, id: photo.id) %>
+    <%= link_to image_tag(photo.image.thumb), photoalbum_photo_path(photoalbum_id: @photoal.id, id: photo.id) %>
 
 	<% end %>
 </div>

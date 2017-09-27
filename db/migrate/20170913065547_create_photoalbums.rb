@@ -4,6 +4,7 @@ class CreatePhotoalbums < ActiveRecord::Migration[5.1]
 
     	t.string :title
     	t.text :description
+    	t.string :image
 
 
     	t.references :user, foreign_key: true
